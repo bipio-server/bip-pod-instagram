@@ -1,4 +1,5 @@
-[Instagram](instagram.png) bip-pod-instagram
+![Instagram](instagram.png) bip-pod-instagram
+=======
 
 <a href="http://www.instagram.com">instagram</a> pod for [bipio](https://bip.io).  
 
