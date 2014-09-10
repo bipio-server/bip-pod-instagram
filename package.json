@@ -1,6 +1,6 @@
 {
     "name": "bip-pod-instagram",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "author" : "Michael Pearson",
     "description": "Instagram Pod for Bipio",
     "keywords": [
@@ -27,7 +27,7 @@
         "pkginfo": "0.2.x",
         "bip-pod" : ">=0.0.1",
         "passport-instagram" : ">=0.1.2",
-        "request" : ">=2.29.1"         
+        "request" : ">=2.29.1"
     },
     "engines": {
         "node": ">= 0.10.0"

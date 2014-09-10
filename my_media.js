@@ -22,8 +22,8 @@
 
 function MyMedia(podConfig) {
   this.name = 'my_media';
-  this.description = "Retrieve Your Media";
-  this.description_long = "Retrieves your recently uploaded images and videos";
+  this.title = "Retrieve Your Media";
+  this.description = "Retrieves your recently uploaded images and videos";
   this.trigger = true;
   this.singleton = true;
   this.auto = true;
@@ -76,7 +76,7 @@ MyMedia.prototype.invoke = function(imports, channel, sysImports, contentParts, 
       if (!err) {
         if (media.data && media.data.length > 0) {
           for (var i = 0; i < media.data.length; i++) {
-            
+
             (function(media, contentParts, next) {
               var ptr, fName, outfile, ext;
               if ('image' === media.type) {
@@ -104,15 +104,15 @@ MyMedia.prototype.invoke = function(imports, channel, sysImports, contentParts, 
                     } else {
                       resource.log(err, channel);
                     }
-                    
+
                     if (contentParts && contentParts._files) {
                       contentParts._files.push(fileStruct)
                     } else {
                       contentParts = {
-                        _files : [ fileStruct ]  
+                        _files : [ fileStruct ]
                       }
-                    }                    
-                    
+                    }
+
                     next(err, exports, contentParts, fileStruct.size);
                   },
                   media,  // export
