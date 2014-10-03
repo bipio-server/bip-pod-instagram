@@ -47,7 +47,7 @@ Instagram = new Pod({
 Instagram._apiURL = 'https://api.instagram.com/v1/';
 
 Instagram.getUserId = function(sysImports) {
-  return sysImports.auth.oauth.profile.data.id;
+  return JSON.parse(sysImports.auth.oauth.profile).data.id;
 }
 
 Instagram.getURL = function(path, sysImports) {
