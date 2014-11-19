@@ -1,0 +1,54 @@
+{
+  "name": "instagram",
+  "title": "Instagram",
+  "description": "Capture and Share the World's Moments. Instagram is a fast, beautiful and fun way to share your life with friends and family",
+  "url": "",
+  "trackDuplicates": false,
+  "config": {
+    "oauth": {
+      "clientID": "",
+      "clientSecret": "",
+      "method": "authenticate",
+      "scopes": [
+        "basic"
+      ]
+    }
+  },
+  "auth": {
+    "strategy": "oauth"
+  },
+  "rpcs": {},
+  "actions": {
+    "my_media": {
+      "title": "Retrieve Your Media",
+      "description": "Retrieves your recently uploaded images and videos",
+      "trigger": "poll",
+      "config": {
+        "properties": {}
+      },
+      "exports": {
+        "properties": {
+          "file_name": {
+            "type": "string",
+            "description": "File Name"
+          },
+          "caption": {
+            "type": "string",
+            "description": "Media Caption"
+          },
+          "filter": {
+            "type": "string",
+            "description": "Filter Name"
+          },
+          "media_url": {
+            "type": "string",
+            "description": "Media Standard Res URL"
+          }
+        }
+      },
+      "imports": {
+        "properties": {}
+      }
+    }
+  }
+}
