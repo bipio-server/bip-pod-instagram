@@ -20,50 +20,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-function MyMedia(podConfig) {
-  this.name = 'my_media';
-  this.title = "Retrieve Your Media";
-  this.description = "Retrieves your recently uploaded images and videos";
-  this.trigger = true;
-  this.singleton = true;
-  this.auto = true;
-  this.podConfig = podConfig;
-}
+function MyMedia() {}
 
 MyMedia.prototype = {};
-
-MyMedia.prototype.getSchema = function() {
-  return {
-    'config' : {
-      properties : {
-    }
-    },
-    'imports' : {
-      properties : {
-    }
-    },
-    'exports' : {
-      properties : {
-        'file_name' : {
-          type : 'string',
-          description : 'File Name'
-        },
-        'caption' : {
-          type : 'string',
-          description : 'Media Caption'
-        },
-        'filter' : {
-          type : 'string',
-          description : 'Filter Name'
-        },
-        'media_url' : {
-          type : 'string',
-          description : 'Media Standard Res URL'
-        }
-      }
-    }
-  }
-}
 
 MyMedia.prototype.invoke = function(imports, channel, sysImports, contentParts, next) {
   var pod = this.pod,

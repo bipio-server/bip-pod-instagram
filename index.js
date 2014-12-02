@@ -21,28 +21,7 @@
 var Pod = require('bip-pod'),
   request = require('request');
 
-Instagram = new Pod({
-  name : 'instagram',
-  title : 'Instagram',
-  description : 'Capture and Share the World\'s Moments. Instagram is a fast, beautiful and fun way to share your life with friends and family',
-  /*
-  dataSources : [
-    require('./models/my_media'),
-  ],*/
-  authType : 'oauth',
-  passportStrategy : require('passport-instagram').Strategy,
-  config : {
-    "oauth": {
-      "clientID" : "",
-      "clientSecret" : "",
-      "callbackURL" : "", // eg: http://localhost:5000/rpc/oauth/instagram/cb
-      "method" : "authenticate",
-      "scopes": [
-          "basic"
-      ]
-    }
-  }
-});
+Instagram = new Pod();
 
 Instagram._apiURL = 'https://api.instagram.com/v1/';
 
@@ -51,12 +30,8 @@ Instagram.getUserId = function(sysImports) {
 }
 
 Instagram.getURL = function(path, sysImports) {
-  return this._apiURL + path + '?access_token=' + sysImports.auth.oauth.token;
+  return this._apiURL + path + '?access_token=' + sysImports.auth.oauth.access_token;
 }
-
-
-Instagram.add(require('./my_media.js'));
-
 
 // -----------------------------------------------------------------------------
 module.exports = Instagram;
