@@ -24,6 +24,10 @@ function MyMedia() {}
 
 MyMedia.prototype = {};
 
+MyMedia.prototype.trigger = function() {
+  this.invoke.apply(this, arguments);
+}
+
 MyMedia.prototype.invoke = function(imports, channel, sysImports, contentParts, next) {
   var pod = this.pod,
   log = this.$resource.log,
