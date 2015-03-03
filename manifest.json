@@ -44,19 +44,19 @@
         "properties": {
           "file_name": {
             "type": "string",
-            "description": "File Name"
+            "title": "File Name"
           },
           "caption": {
             "type": "string",
-            "description": "Media Caption"
+            "title": "Media Caption"
           },
           "filter": {
             "type": "string",
-            "description": "Filter Name"
+            "title": "Filter Name"
           },
           "media_url": {
             "type": "string",
-            "description": "Media Standard Res URL"
+            "title": "Media Standard Res URL"
           }
         }
       },
