@@ -24,8 +24,52 @@ function MyMedia() {}
 
 MyMedia.prototype = {};
 
-MyMedia.prototype.trigger = function() {
-  this.invoke.apply(this, arguments);
+MyMedia.prototype.setup = function(channel, accountInfo, next) {
+	this.pod.trackingStart(channel, accountInfo, true, next);
+}
+
+MyMedia.prototype.teardown = function(channel, accountInfo, next) {
+	this.pod.trackingRemove(channel, accountInfo, next);
+}
+
+MyMedia.prototype.trigger = function(imports, channel, sysImports, contentParts, next) {
+	  var pod = this.pod,
+	  	$resource = this.$resource,
+	    self = this,
+	    dataDir = pod.getDataDir(channel, this.name);
+	  pod.trackingGet(channel, function(err, since) {
+	    if (err) {
+	      next(err);
+	    } else {
+	      pod.trackingUpdate(channel, function(err, until) {
+	        if (err) {
+	          next(err);
+	        } else {
+	          self.invoke(imports, channel, sysImports, contentParts, function(err, photo) {
+	            if (err) {
+	              next(err);
+	            } else {
+
+								var fileName = photo.source.match(/\w*\.jpg/).shift(),
+									outFile = dataDir + '/' + fileName;
+
+								$resource._httpStreamToFile(
+									photo.source,
+									outFile,
+									function(err, fileStruct) {
+										if (err) {
+											next(err);
+										} else {
+				              next(false, photo, { _files : [ fileStruct ] }, fileStruct.size);
+										}
+									}
+								);
+	            }
+	          });
+	        }
+	      });
+	    }
+	  });
 }
 
 MyMedia.prototype.invoke = function(imports, channel, sysImports, contentParts, next) {
@@ -47,7 +91,7 @@ MyMedia.prototype.invoke = function(imports, channel, sysImports, contentParts, 
               } else if ('video' === media.type) {
                 ptr = media.videos.standard_resolution.url;
               } else {
-                log('Unknown media type ' + media.type, channel, 'error');
+            	  log('Unknown media type ' + media.type, channel, 'error');
                 return;
               }
 
