@@ -58,10 +58,17 @@
             "type": "string",
             "title": "Media Standard Res URL"
           }
-        }
+        },
+        "disposition": [
+       		"file_name",
+       		"caption",
+       		"filter",
+       		"media_url"
+       		]
       },
       "imports": {
-        "properties": {}
+        "properties": {},
+        "disposition": []
       }
     }
   },
