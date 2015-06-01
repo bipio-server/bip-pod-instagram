@@ -34,8 +34,8 @@
   "rpcs": {},
   "actions": {
     "my_media": {
-      "title": "Retrieve Your Media",
-      "description": "Retrieves your recently uploaded images and videos",
+      "title": "When I Upload New Media",
+      "description": "Triggers When You Create New Media On Instagram",
       "trigger": "poll",
       "config": {
         "properties": {}
