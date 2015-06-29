@@ -38,7 +38,8 @@
       "description": "Triggers When You Create New Media On Instagram",
       "trigger": "poll",
       "config": {
-        "properties": {}
+        "properties": {},
+        "disposition": []
       },
       "exports": {
         "properties": {
@@ -58,13 +59,7 @@
             "type": "string",
             "title": "Media Standard Res URL"
           }
-        },
-        "disposition": [
-       		"file_name",
-       		"caption",
-       		"filter",
-       		"media_url"
-       		]
+        }
       },
       "imports": {
         "properties": {},
