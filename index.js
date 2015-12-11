@@ -25,6 +25,10 @@ Instagram = new Pod();
 
 Instagram._apiURL = 'https://api.instagram.com/v1/';
 
+Instagram.profileReprOAuth = function(profile) {
+	return profile.data.username;
+}
+
 Instagram.getUserId = function(sysImports) {
   var uid;
 
